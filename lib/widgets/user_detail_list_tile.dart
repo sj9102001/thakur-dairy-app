@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import '../providers/user_detail.dart';
+
+import '../models/user_detail.dart';
 
 class UserDetailListTile extends StatelessWidget {
   const UserDetailListTile({

@@ -1,8 +1,9 @@
-import 'package:dairyapp/providers/search_user.dart';
-import 'package:dairyapp/providers/user_detail.dart';
-import '../providers/user_details.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+
+import '../providers/search_user.dart';
+import '../models/user_detail.dart';
+import '../providers/user_details.dart';
 
 class EditUserScreen extends StatefulWidget {
   static const routeName = '/edit-user';

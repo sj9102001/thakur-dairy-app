@@ -1,14 +1,15 @@
-import 'package:dairyapp/screen/edit_user_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '../providers/search_user.dart';
 import '../widgets/user_detail_list_tile.dart';
+import '../screen/edit_user_screen.dart';
 
 class UserDetailScreen extends StatelessWidget {
   static const routeName = '/user-detail';
   @override
   Widget build(BuildContext context) {
+    print('build method of user detail screen');
     final _phoneNo = ModalRoute.of(context).settings.arguments;
     final _userDetail =
         Provider.of<SearchUser>(context).getByPhoneNumber(_phoneNo);

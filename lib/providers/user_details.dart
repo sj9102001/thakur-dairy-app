@@ -3,7 +3,7 @@ import 'package:http/http.dart' as http;
 import 'dart:convert';
 
 import '../models/http_exception.dart';
-import './user_detail.dart';
+import '../models/user_detail.dart';
 
 class UserDetails with ChangeNotifier {
   List<UserDetail> _users = [];
@@ -16,6 +16,7 @@ class UserDetails with ChangeNotifier {
     var url = Uri.parse(
         'https://rclklgfkb5.execute-api.us-east-1.amazonaws.com/test/edit-user');
     print(userDetail.lastName);
+    print('i update to server');
     try {
       final response = await http.post(url,
           body: json.encode({
@@ -36,6 +37,7 @@ class UserDetails with ChangeNotifier {
   Future<void> addUser(UserDetail userDetail) async {
     var url = Uri.parse(
         'https://rclklgfkb5.execute-api.us-east-1.amazonaws.com/test/add-user');
+    print('i add to server');
     try {
       final response = await http.post(url,
           body: json.encode({
@@ -64,11 +66,5 @@ class UserDetails with ChangeNotifier {
       print(error);
       throw error;
     }
-
-    // print(_newUser.landmark);
-    // print(_newUser.address);
-    // print(_newUser.name);
-    // print(_newUser.milkBalance);
-    // print(_newUser.phoneNo);
   }
 }
