@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-//done wala
-import '../providers/user_detail.dart';
+
+import '../models/user_detail.dart';
 import '../providers/user_details.dart';
 import '../models/http_exception.dart';
 
@@ -68,7 +68,7 @@ class _AddUserScreenState extends State<AddUserScreen> {
 
   @override
   Widget build(BuildContext context) {
-    print('how many times add widget runs');
+    print('build method of add user');
     return Scaffold(
       key: _scaffoldKey,
       appBar: AppBar(

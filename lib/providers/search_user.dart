@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 
-import './user_detail.dart';
+import '../models/user_detail.dart';
+import '../models/http_exception.dart';
 
 class SearchUser with ChangeNotifier {
   List<UserDetail> _searchedUsers = [];
@@ -21,7 +22,7 @@ class SearchUser with ChangeNotifier {
         'https://rclklgfkb5.execute-api.us-east-1.amazonaws.com/test/view-detail/name/$name');
     try {
       final response = await http.get(url);
-      print('i get');
+      print('get search by name from server');
       final extractedData = json.decode(response.body) as List;
       Map tempData = {};
       final List<UserDetail> loadedData = [];
@@ -39,12 +40,11 @@ class SearchUser with ChangeNotifier {
       });
 
       _searchedUsers = loadedData;
-      return _searchedUsers;
-      notifyListeners();
 
-      // if (response.statusCode == 401) {
-      //   throw HttpException(response.body);
-      // }
+      if (response.statusCode != 200) {
+        throw HttpException(response.body);
+      }
+      return _searchedUsers;
     } catch (error) {
       throw error;
     }

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
-import './screen/add_milk_screen.dart';
-import './screen/add_user_screen.dart';
-import './screen/edit_user_screen.dart';
-import './screen/view_user_screen.dart';
+import '../screen/add_milk_screen.dart';
+import '../screen/add_user_screen.dart';
+import '../screen/edit_user_screen.dart';
+import '../screen/view_user_screen.dart';
 
 class HomePage extends StatelessWidget {
   void addMilkScreen(BuildContext ctx) {
@@ -24,6 +24,7 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    print('build method of homepage');
     return Scaffold(
       appBar: AppBar(
         title: Text('Home Page'),
