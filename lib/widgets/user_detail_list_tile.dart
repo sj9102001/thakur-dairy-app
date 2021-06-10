@@ -16,13 +16,23 @@ class UserDetailListTile extends StatelessWidget {
     print('build method of user details');
     return ListView(
       children: [
-        Row(
-          children: [
-            Text('Name: ',
-                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 22)),
-            Text('${_userDetail.firstName} ${_userDetail.lastName} ',
-                style: TextStyle(fontSize: 20, fontWeight: FontWeight.w300)),
-          ],
+        Container(
+          decoration: BoxDecoration(
+              shape: BoxShape.rectangle,
+              borderRadius: BorderRadius.circular(20)),
+          child: Card(
+            elevation: 8,
+            child: Row(
+              children: [
+                Text('Name: ',
+                    style:
+                        TextStyle(fontWeight: FontWeight.bold, fontSize: 22)),
+                Text('${_userDetail.firstName} ${_userDetail.lastName} ',
+                    style:
+                        TextStyle(fontSize: 20, fontWeight: FontWeight.w300)),
+              ],
+            ),
+          ),
         ),
         // SizedBox(
         //   height: 10,
@@ -30,52 +40,74 @@ class UserDetailListTile extends StatelessWidget {
         Divider(
           height: 10,
         ),
-        Row(
-          children: [
-            Text('Phone Number: ',
-                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 22)),
-            Text('${_userDetail.phoneNo} ',
-                style: TextStyle(fontSize: 20, fontWeight: FontWeight.w300)),
-          ],
+        Card(
+          elevation: 8,
+          child: Row(
+            children: [
+              Text('Phone Number: ',
+                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 22)),
+              Text('${_userDetail.phoneNo} ',
+                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.w300)),
+            ],
+          ),
         ),
         Divider(
           height: 10,
         ),
-        Row(
-          children: [
-            Text('Address: ',
-                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 22)),
-            Text('${_userDetail.address} ',
-                style: TextStyle(fontSize: 20, fontWeight: FontWeight.w300)),
-          ],
+        Card(
+          elevation: 8,
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                'Address: ',
+                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 22),
+              ),
+              Expanded(
+                child: Container(
+                  height: 90,
+                  child: SingleChildScrollView(
+                    scrollDirection: Axis.vertical,
+                    child: Text(
+                      '${_userDetail.address}',
+                      style:
+                          TextStyle(fontSize: 20, fontWeight: FontWeight.w300),
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          ),
         ),
         Divider(
           height: 10,
         ),
-        Row(
-          children: [
-            Text('Landmark: ',
-                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 22)),
-            Text('${_userDetail.landmark} ',
-                style: TextStyle(fontSize: 20, fontWeight: FontWeight.w300)),
-          ],
+        Card(
+          elevation: 8,
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                'Landmark: ',
+                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 22),
+              ),
+              Expanded(
+                child: Container(
+                  height: 90,
+                  child: SingleChildScrollView(
+                    scrollDirection: Axis.vertical,
+                    child: Text(
+                      '${_userDetail.landmark}',
+                      style:
+                          TextStyle(fontSize: 20, fontWeight: FontWeight.w300),
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          ),
         ),
       ],
     );
   }
 }
-
-// final String firstName;
-// final String lastName;
-// final String phoneNo;
-// final String address;
-// final String plusCode;
-// final String landmark;
-
-// UserDetailScreen(
-//     {this.address,
-//     this.phoneNo,
-//     this.lastName,
-//     this.firstName,
-//     this.landmark,
-//     this.plusCode});

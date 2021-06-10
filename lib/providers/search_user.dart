@@ -22,6 +22,10 @@ class SearchUser with ChangeNotifier {
         'https://rclklgfkb5.execute-api.us-east-1.amazonaws.com/test/view-detail/name/$name');
     try {
       final response = await http.get(url);
+      print(response.statusCode);
+      if (response.statusCode != 200) {
+        throw HttpException(response.body);
+      }
       print('get search by name from server');
       final extractedData = json.decode(response.body) as List;
       Map tempData = {};
@@ -41,9 +45,6 @@ class SearchUser with ChangeNotifier {
 
       _searchedUsers = loadedData;
 
-      if (response.statusCode != 200) {
-        throw HttpException(response.body);
-      }
       return _searchedUsers;
     } catch (error) {
       throw error;

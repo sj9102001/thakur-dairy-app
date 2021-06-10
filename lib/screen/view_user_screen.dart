@@ -66,14 +66,14 @@ class _ViewUserScreenState extends State<ViewUserScreen> {
                     controller: enteredNameController,
                     onSubmitted: (value) async {
                       setState(() {
-                        enteredName = enteredNameController.text;
+                        enteredName = enteredNameController.text.trim();
                         _isLoading = true;
                       });
                       try {
                         List searchedData = await Provider.of<SearchUser>(
                                 context,
                                 listen: false)
-                            .searchByName(enteredNameController.text);
+                            .searchByName(enteredNameController.text.trim());
                         setState(() {
                           _searchedData = searchedData;
                           _isLoading = false;
@@ -87,11 +87,6 @@ class _ViewUserScreenState extends State<ViewUserScreen> {
                       } catch (error) {
                         errorMessage = 'Something Went Wrong!';
                         await _showErrorDialog(errorMessage);
-                      } finally {
-                        // setState(() {
-                        //   _isLoading = false;
-                        // });
-                        // Navigator.of(context).pop();
                       }
                     },
                   ),
@@ -107,7 +102,7 @@ class _ViewUserScreenState extends State<ViewUserScreen> {
                     try {
                       List searchedData =
                           await Provider.of<SearchUser>(context, listen: false)
-                              .searchByName(enteredNameController.text);
+                              .searchByName(enteredNameController.text.trim());
                       setState(() {
                         _searchedData = searchedData;
                         _isLoading = false;
@@ -121,14 +116,7 @@ class _ViewUserScreenState extends State<ViewUserScreen> {
                     } catch (error) {
                       errorMessage = 'Something Went Wrong!';
                       await _showErrorDialog(errorMessage);
-                    } finally {
-                      // setState(() {
-                      //   _isLoading = false;
-                      // });
-                      // Navigator.of(context).pop();
                     }
-
-                    print(_searchedData);
                   }),
             ],
           ),
@@ -139,24 +127,44 @@ class _ViewUserScreenState extends State<ViewUserScreen> {
                   : Expanded(
                       child: ListView.builder(
                           itemBuilder: (context, index) {
-                            return InkWell(
+                            return Container(
+                              height: 75,
+                              alignment: Alignment.center,
+                              margin: EdgeInsets.all(5),
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(10),
+                                gradient: LinearGradient(
+                                  colors: [
+                                    Colors.indigo.shade700,
+                                    Colors.indigo.shade200,
+                                  ],
+                                  begin: const FractionalOffset(0.0, 0.0),
+                                  end: const FractionalOffset(1.0, 0.0),
+                                  stops: [0.0, 1.0],
+                                  tileMode: TileMode.clamp,
+                                ),
+                              ),
                               child: ListTile(
+                                onTap: () {
+                                  Navigator.of(context).pushNamed(
+                                      UserDetailScreen.routeName,
+                                      arguments: _searchedData[index].phoneNo);
+                                },
                                 title: Text(
                                   '${_searchedData[index].firstName.toString()} ${_searchedData[index].lastName.toString()}',
                                   style: TextStyle(fontWeight: FontWeight.bold),
                                 ),
                                 subtitle: Text(
-                                    'Phone No: ${_searchedData[index].phoneNo.toString()}'),
+                                  'Phone No: ${_searchedData[index].phoneNo.toString()}',
+                                  style: TextStyle(fontWeight: FontWeight.bold),
+                                ),
                                 trailing: Text(
-                                  '${_searchedData[index].address.toString()}',
-                                  style: TextStyle(fontSize: 13),
+                                  '${_searchedData[index].address.toString().length > 36 ? _searchedData[index].address.toString().substring(0, 10) : _searchedData[index].address.toString()}',
+                                  style: TextStyle(
+                                      fontSize: 13,
+                                      fontWeight: FontWeight.bold),
                                 ),
                               ),
-                              onTap: () {
-                                Navigator.of(context).pushNamed(
-                                    UserDetailScreen.routeName,
-                                    arguments: _searchedData[index].phoneNo);
-                              },
                             );
                           },
                           itemCount: _searchedData.length),

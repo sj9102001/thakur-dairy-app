@@ -15,7 +15,6 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MultiProvider(
@@ -30,9 +29,10 @@ class MyApp extends StatelessWidget {
       child: MaterialApp(
         title: 'Flutter Demo',
         theme: ThemeData(
-            primarySwatch: Colors.purple,
-            accentColor: Colors.amber,
-            scaffoldBackgroundColor: Colors.white),
+          primarySwatch: Colors.indigo,
+          accentColor: Colors.amber,
+          scaffoldBackgroundColor: Colors.white,
+        ),
         routes: {
           AddMilkScreen.routeName: (ctx) => AddMilkScreen(),
           AddUserScreen.routeName: (ctx) => AddUserScreen(),
@@ -40,7 +40,7 @@ class MyApp extends StatelessWidget {
           EditUserScreen.routeName: (ctx) => EditUserScreen(),
           UserDetailScreen.routeName: (ctx) => UserDetailScreen(),
         },
-        home: HomePage(),
+        home: Container(child: HomePage()),
       ),
     );
   }

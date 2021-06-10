@@ -104,15 +104,11 @@ class _EditUserScreenState extends State<EditUserScreen> {
                             phoneNo: _toEditUserDetail.phoneNo,
                             plusCode: _toEditUserDetail.plusCode);
                       },
-                      // onFieldSubmitted: (_) {
-                      //   FocusScope.of(context).requestFocus(_lastNameFocusNode);
-                      // },
                     ),
                     TextFormField(
                       initialValue: _initValues['lastName'],
                       decoration: InputDecoration(labelText: 'Last Name'),
                       textInputAction: TextInputAction.next,
-                      // focusNode: _lastNameFocusNode,
                       validator: (value) {
                         if (value.isEmpty) {
                           return 'Last Name is required';
@@ -128,10 +124,6 @@ class _EditUserScreenState extends State<EditUserScreen> {
                             plusCode: _toEditUserDetail.plusCode);
                       },
                       autofocus: true,
-                      // onFieldSubmitted: (_) {
-                      //   FocusScope.of(context)
-                      //       .requestFocus(_phoneNumberFocusNode);
-                      // },
                     ),
                     TextFormField(
                       initialValue: _initValues['phoneNo'],
@@ -139,7 +131,6 @@ class _EditUserScreenState extends State<EditUserScreen> {
                       maxLength: 10,
                       textInputAction: TextInputAction.next,
                       keyboardType: TextInputType.number,
-                      // focusNode: _phoneNumberFocusNode,
                       validator: (value) {
                         if (value.isEmpty) {
                           return 'Phone number is required';
