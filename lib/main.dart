@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import 'widgets/homepage.dart';
+import './constant.dart';
 import './screen/add_milk_screen.dart';
 import './screen/add_user_screen.dart';
 import './screen/edit_user_screen.dart';
@@ -29,7 +30,7 @@ class MyApp extends StatelessWidget {
       child: MaterialApp(
         title: 'Flutter Demo',
         theme: ThemeData(
-          primarySwatch: Colors.indigo,
+          primaryColor: kPrimaryColor,
           accentColor: Colors.amber,
           scaffoldBackgroundColor: Colors.white,
         ),

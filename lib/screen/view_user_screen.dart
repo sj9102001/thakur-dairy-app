@@ -22,16 +22,24 @@ class _ViewUserScreenState extends State<ViewUserScreen> {
       context: _scaffoldKey.currentContext,
       builder: ((context) => AlertDialog(
             title: Text('An error occured'),
-            content: Text('${message}'),
+            content: Text('$message'),
             actions: [
-              FlatButton(
-                onPressed: () {
-                  Navigator.of(context).pop();
-                  setState(() {
-                    _isLoading = false;
-                  });
-                },
-                child: Text('Okay'),
+              Container(
+                decoration: BoxDecoration(
+                    color: Theme.of(context).primaryColor,
+                    borderRadius: BorderRadius.circular(20)),
+                child: TextButton(
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                    setState(() {
+                      _isLoading = false;
+                    });
+                  },
+                  child: Text(
+                    'Okay',
+                    style: TextStyle(color: Colors.white),
+                  ),
+                ),
               )
             ],
           )),
@@ -53,16 +61,32 @@ class _ViewUserScreenState extends State<ViewUserScreen> {
       ),
       body: Column(
         children: [
-          Row(
-            children: [
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Container(
-                  width: 300,
+          Container(
+            alignment: Alignment.center,
+            margin: EdgeInsets.fromLTRB(20, 5, 20, 0),
+            padding: EdgeInsets.symmetric(horizontal: 20),
+            height: 54,
+            decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.circular(20),
+              boxShadow: [
+                BoxShadow(
+                  offset: Offset(0, 10),
+                  blurRadius: 50,
+                  color: Theme.of(context).primaryColor,
+                ),
+              ],
+            ),
+            child: Row(
+              children: [
+                Expanded(
                   child: TextField(
                     autofocus: false,
-                    decoration:
-                        InputDecoration(labelText: 'Please Enter A Name'),
+                    decoration: InputDecoration(
+                      hintText: 'Name',
+                      enabledBorder: InputBorder.none,
+                      focusedBorder: InputBorder.none,
+                    ),
                     controller: enteredNameController,
                     onSubmitted: (value) async {
                       setState(() {
@@ -91,37 +115,49 @@ class _ViewUserScreenState extends State<ViewUserScreen> {
                     },
                   ),
                 ),
-              ),
-              IconButton(
-                  icon: Icon(Icons.search),
-                  onPressed: () async {
-                    setState(() {
-                      enteredName = enteredNameController.text;
-                      _isLoading = true;
-                    });
-                    try {
-                      List searchedData =
-                          await Provider.of<SearchUser>(context, listen: false)
-                              .searchByName(enteredNameController.text.trim());
+                IconButton(
+                    icon: Icon(Icons.search),
+                    onPressed: () async {
                       setState(() {
-                        _searchedData = searchedData;
-                        _isLoading = false;
+                        enteredName = enteredNameController.text;
+                        _isLoading = true;
                       });
-                    } on HttpException catch (error) {
-                      if (error.toString().contains('User don\'t exist')) {
-                        errorMessage =
-                            'User don\'t exist with prefix: ${enteredName}.';
+                      try {
+                        List searchedData = await Provider.of<SearchUser>(
+                                context,
+                                listen: false)
+                            .searchByName(enteredNameController.text.trim());
+                        setState(() {
+                          _searchedData = searchedData;
+                          _isLoading = false;
+                        });
+                      } on HttpException catch (error) {
+                        if (error.toString().contains('User don\'t exist')) {
+                          errorMessage =
+                              'User don\'t exist with prefix: ${enteredName}.';
+                        }
+                        await _showErrorDialog(errorMessage);
+                      } catch (error) {
+                        errorMessage = 'Something Went Wrong!';
+                        await _showErrorDialog(errorMessage);
                       }
-                      await _showErrorDialog(errorMessage);
-                    } catch (error) {
-                      errorMessage = 'Something Went Wrong!';
-                      await _showErrorDialog(errorMessage);
-                    }
-                  }),
-            ],
+                    }),
+              ],
+            ),
           ),
+          SizedBox(height: 20),
           enteredName == ''
-              ? Center(child: Text('Enter Name to search'))
+              ? Container(
+                  margin: EdgeInsets.only(top: 175),
+                  child: Center(
+                      child: Text(
+                    'Enter Name to search',
+                    style: TextStyle(
+                        color: Colors.black,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 30),
+                  )),
+                )
               : _isLoading
                   ? CircularProgressIndicator()
                   : Expanded(
@@ -135,8 +171,8 @@ class _ViewUserScreenState extends State<ViewUserScreen> {
                                 borderRadius: BorderRadius.circular(10),
                                 gradient: LinearGradient(
                                   colors: [
-                                    Colors.indigo.shade700,
-                                    Colors.indigo.shade200,
+                                    Color(0xFF0C9869),
+                                    Colors.green.shade200,
                                   ],
                                   begin: const FractionalOffset(0.0, 0.0),
                                   end: const FractionalOffset(1.0, 0.0),

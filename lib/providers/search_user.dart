@@ -23,6 +23,8 @@ class SearchUser with ChangeNotifier {
     try {
       final response = await http.get(url);
       print(response.statusCode);
+      final va = json.decode(response.body);
+      print(json.decode(response.body));
       if (response.statusCode != 200) {
         throw HttpException(response.body);
       }
