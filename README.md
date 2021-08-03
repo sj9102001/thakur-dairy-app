@@ -3,7 +3,7 @@
 
 # Dairy App
 
-Made an user management web application that provides Add user, Edit user and View user details. Based on AWS Serverless.
+Made an user management app that is used to manage user data, providing Add user(to add new user), Edit user(to edit existing users) and View user details(to search and display user by their name), made on flutter SDK and Based on AWS Serverless backend.
 
 ## STACK
 
