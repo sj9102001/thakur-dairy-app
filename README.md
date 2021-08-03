@@ -9,7 +9,7 @@ Made an user management web application that provides Add user, Edit user and Vi
 
  - **Front-end** - Flutter-SDK is used for front-end.
   
- - **Data** - All data is modeled and stored in DynamoDB. python being the core language for all services.
+ - **Back-end** - All data is modeled and stored in Amazon DynamoDB, and is based on AWS. python being the core language for all services.
 
 ## FRONT-END
  
