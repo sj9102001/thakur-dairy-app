@@ -1,6 +1,6 @@
-# Thakur Dairy App
+# Dairy App
 
-A Dairy farm management app based on flutter
+Made an user management web application that provides Add user,Edit user and View user details. This web application was the theme of Build on serverless on AWS.
 
 ## Getting Started
 
