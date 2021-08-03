@@ -3,7 +3,7 @@
 
 # Dairy App
 
-Made an user management web application that provides Add user, Edit user and View user details. This web application was the theme of Build on server-less on AWS.
+Made an user management web application that provides Add user, Edit user and View user details. Based on AWS Serverless.
 
 ## STACK
 
