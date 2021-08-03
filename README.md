@@ -1,14 +1,32 @@
+
+
+
 # Dairy App
 
-Made an user management web application that provides Add user,Edit user and View user details. This web application was the theme of Build on serverless on AWS.
+Made an user management web application that provides Add user, Edit user and View user details. Based on AWS Serverless.
 
-## Getting Started
+## STACK
 
-A few resources to get you started if this is your first Flutter project:
+ - **Front-end** - Flutter-SDK is used for front-end.
+  
+ - **Data** - All data is modeled and stored in DynamoDB. python being the core language for all services.
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+## FRONT-END
+ 
+ - **Services**
+ 
+| SERVICES | FUNCTION | DESCRIPTION |
+|--|--|--|
+| ADD/EDIT USER | Add or Edit user details | Uses HTTP Post method to Add new user or Edit existing user |
+|SEARCH USER | Search by name| Uses HTTP Get method to search for existing user by name|
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+
+ - **Screens**
+ 
+
+|SCREENS|FUNCTION | DESCRIPTION|
+|--|--|--|
+| ADD USER| Enter a new user  |Form which takes user details .	 |
+|VIEW USER| User search by name| Text field which takes name input and searches user using SEARCH USER Service
+|EDIT USER| Edit user details | Form with pre-filled data, where changes can be made and data is edited using EDIT USER Service
+
