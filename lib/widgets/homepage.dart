@@ -38,30 +38,18 @@ class HomePage extends StatelessWidget {
           mainAxisSpacing: 20,
         ),
         children: [
-          InkWell(
-            onTap: () => addMilkScreen(context),
-            child: Card(
-              shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.all(Radius.circular(10))),
-              elevation: 10,
-              child: Center(
-                  child: Text('Add Milk',
-                      style: TextStyle(
-                          fontWeight: FontWeight.bold, fontSize: 20))),
-            ),
-          ),
-          InkWell(
-            onTap: () => viewUserScreen(context),
-            child: Card(
-              shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.all(Radius.circular(10))),
-              elevation: 10,
-              child: Center(
-                  child: Text('View User',
-                      style: TextStyle(
-                          fontWeight: FontWeight.bold, fontSize: 20))),
-            ),
-          ),
+          // InkWell(
+          //   onTap: () => addMilkScreen(context),
+          //   child: Card(
+          //     shape: RoundedRectangleBorder(
+          //         borderRadius: BorderRadius.all(Radius.circular(10))),
+          //     elevation: 10,
+          //     child: Center(
+          //         child: Text('Add Milk',
+          //             style: TextStyle(
+          //                 fontWeight: FontWeight.bold, fontSize: 20))),
+          //   ),
+          // ),
           InkWell(
             onTap: () => addUserScreen(context),
             child: Card(
@@ -76,18 +64,31 @@ class HomePage extends StatelessWidget {
             ),
           ),
           InkWell(
-            onTap: () {},
+            onTap: () => viewUserScreen(context),
             child: Card(
               shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.all(Radius.circular(10))),
               elevation: 10,
               child: Center(
-                  child: Text(
-                'Edit User',
-                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
-              )),
+                  child: Text('View User',
+                      style: TextStyle(
+                          fontWeight: FontWeight.bold, fontSize: 20))),
             ),
           ),
+
+          // InkWell(
+          //   onTap: () {},
+          //   child: Card(
+          //     shape: RoundedRectangleBorder(
+          //         borderRadius: BorderRadius.all(Radius.circular(10))),
+          //     elevation: 10,
+          //     child: Center(
+          //         child: Text(
+          //       'Edit User',
+          //       style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+          //     )),
+          //   ),
+          // ),
         ],
       ),
     );
