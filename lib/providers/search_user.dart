@@ -19,7 +19,7 @@ class SearchUser with ChangeNotifier {
 
   Future<List<UserDetail>> searchByName(String name) async {
     var url = Uri.parse(
-        'https://rclklgfkb5.execute-api.us-east-1.amazonaws.com/test/view-detail/name/$name');
+        '');
     try {
       final response = await http.get(url);
       print(response.statusCode);
