@@ -14,7 +14,7 @@ class UserDetails with ChangeNotifier {
 
   Future<void> updateProduct(UserDetail userDetail) async {
     var url = Uri.parse(
-        'https://rclklgfkb5.execute-api.us-east-1.amazonaws.com/test/edit-user');
+        '');
     print(userDetail.lastName);
     print('i update to server');
     try {
@@ -36,7 +36,7 @@ class UserDetails with ChangeNotifier {
 
   Future<void> addUser(UserDetail userDetail) async {
     var url = Uri.parse(
-        'https://rclklgfkb5.execute-api.us-east-1.amazonaws.com/test/add-user');
+        '');
     print('i add to server');
     try {
       final response = await http.post(url,
