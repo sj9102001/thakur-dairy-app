@@ -30,3 +30,4 @@ Made an user management app that is used to manage user data, providing Add user
 |VIEW USER| User search by name| Text field which takes name input and searches user using SEARCH USER Service
 |EDIT USER| Edit user details | Form with pre-filled data, where changes can be made and data is edited using EDIT USER Service
 
+![screenshots](https://user-images.githubusercontent.com/80746702/177049542-c31e4e6a-78ef-4cf2-9bed-233b011b710d.png)
